@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # WNT-Trading
 =======
 # Company Website
@@ -23,6 +22,5 @@ This project is a simple company management website built with Flask. It include
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/company-website.git
-   cd company-website
->>>>>>> 1bd5073 (first implement')
+   git clone https://github.com/HusseienHs/WNT-Trading.git
+   cd WNT-Trading
