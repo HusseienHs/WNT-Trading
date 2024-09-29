@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
-{% block title %}Invoices - My Personal Website{% endblock %}
+{% block title %}Create Invoice - My Personal Website{% endblock %}
 
 {% block content %}
-<h2>Invoices Management</h2>
-<p>This is where you can manage your invoices.</p>
+<h2>Create Invoice</h2>
+<p>Fill out the details to create your invoice.</p>
 
 <!-- Success message -->
 {% with messages = get_flashed_messages() %}
@@ -17,36 +17,17 @@
 {% endif %}
 {% endwith %}
 
-<!-- Button to open the form for adding an invoice -->
-<button onclick="document.getElementById('addInvoiceForm').style.display='block'">Add Invoice</button>
+<form action="{{ url_for('create_invoice') }}" method="POST">
+    <label>Invoice Number:</label><br>
+    <input type="text" name="invoice_number" required><br>
 
-<!-- Invoice addition form -->
-<div id="addInvoiceForm" style="display:none;">
-    <h3>Add Invoice</h3>
-    <form action="/invoices" method="POST" enctype="multipart/form-data">
-        <label for="invoice_number">Invoice Number:</label>
-        <input type="text" id="invoice_number" name="invoice_number" required><br>
+    <label>Amount:</label><br>
+    <input type="text" name="amount" required><br>
 
-        <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" required><br>
+    <label>Date:</label><br>
+    <input type="text" name="date" required><br>
 
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" required><br>
-
-        <label for="invoice_file">Upload Invoice File:</label>
-        <input type="file" id="invoice_file" name="invoice_file" required><br>
-
-        <input type="submit" value="Submit">
-        <button type="button" onclick="document.getElementById('addInvoiceForm').style.display='none'">Cancel</button>
-    </form>
-</div>
-
-<!-- List of uploaded invoices -->
-<h3>Uploaded Invoices</h3>
-<ul>
-    {% for invoice in invoices %}
-    <li>{{ invoice }}</li>
-    {% endfor %}
-</ul>
+    <button type="submit">Create Invoice</button>
+</form>
 
 {% endblock %}
